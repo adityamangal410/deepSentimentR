@@ -1,0 +1,11 @@
+Package: deepSentimentR
+Type: Package
+Title: Package to Analyze Sentiment Datasets
+Version: 0.1.0
+Author: Aditya Mangal
+Maintainer: Aditya Mangal <adityamangal410@gmail.com>
+Description: Query, View and Analyze Sentiment datasets, for example the Sentiment140 dataset.
+    (<http://help.sentiment140.com/for-students/>).
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
