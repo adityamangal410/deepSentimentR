@@ -1,0 +1,188 @@
+---
+title: "Package Create"
+author: "Aditya Mangal"
+date: "2/18/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(devtools)
+```
+
+```{r}
+pkgName <- "sentiment140.amangal.rajivji"
+```
+```{r}
+usethis::create_package(path = pkgName, rstudio = FALSE)
+```
+
+```{r}
+setwd(pkgName)
+usethis::use_package("ggplot2", type = "Imports")
+```
+
+```{r}
+colNames <- c("polarity",
+              "id",
+              "date",
+              "query",
+              "user",
+              "text")
+sentiment140_train <- read_csv("~/Downloads/trainingandtestdata/training.1600000.processed.noemoticon.csv", col_names = colNames)
+sentiment140_train %>% 
+  glimpse()
+```
+
+```{r}
+sentiment140_test <- read_csv("~/Downloads/trainingandtestdata/testdata.manual.2009.06.14.csv", col_names = colNames)
+sentiment140_test %>% 
+  glimpse()
+```
+
+```{r}
+setwd(pkgName)
+usethis::use_data(sentiment140_train, sentiment140_test, overwrite = TRUE)
+```
+```{r}
+devtools::document(pkg = "sentiment140.amangal.rajivji")
+```
+
+```{r}
+usethis::use_data_raw()
+```
+
+
+```{r}
+devtools::check(pkg = "sentiment140.amangal.rajivji")
+```
+
+```{r}
+devtools::build(pkg = "sentiment140.amangal.rajivji")
+```
+
+```{r}
+devtools::install(pkg = "sentiment140.amangal.rajivji")
+```
+
+```{r}
+rm(sentiment140_train)
+data("sentiment140_train")
+sentiment140_train %>% 
+  glimpse()
+```
+
+# Query freq_by_polarity
+
+
+```{r}
+library(sentiment140.amangal.rajivji)
+sentiment140_train %>% 
+  freq_by_polarity(user_list = c("", "DarkPiano"), 
+                   start_date_time = lubridate::as_datetime("2009-05-30"),
+                   end_date_time = lubridate::as_datetime("2009-06-03"),
+                   keyword_list = c("good"))
+```
+
+# Testthat
+
+```{r}
+usethis::use_testthat()
+usethis::use_test(name = "query_freq_by_polarity")
+devtools::test("sentiment140.amangal.rajivji")
+```
+
+```{r}
+usethis::use_travis()
+```
+
+# POS Tagging
+
+```{r}
+library(sentiment140.amangal.rajivji)
+pos_tag()
+```
+
+# Time series
+
+```{r}
+library(sentiment140.amangal.rajivji)
+time_series()
+```
+
+# Bigram Network
+
+```{r}
+library(sentiment140.amangal.rajivji)
+bigram_network()
+```
+
+# Word Correlation Network
+
+```{r}
+library(sentiment140.amangal.rajivji)
+word_cor_network()
+```
+
+# Rhub
+
+```{r}
+library(rhub)
+rhub::check_for_cran(check_args = "--as-cran", path = "sentiment140.amangal.rajivji")
+```
+
+# Vignettes
+
+```{r}
+usethis::use_vignette("Report")
+devtools::build_vignettes(pkg = "sentiment140.amangal.rajivji")
+```
+
+
+# Keras
+
+```{r}
+library(sentiment140.amangal.rajivji)
+
+train_lstm(epochs = 10,
+           model_save_path = "sentiment140.amangal.rajivji/inst/extdata/train_no_glove_lstm.rds")
+```
+```{r}
+train_lstm_with_glove(epochs = 10,
+                      glove_file_path = "~/Desktop/machine-learning/keras/glove.6B/glove.6B.100d.txt",
+                      model_save_path = "sentiment140.amangal.rajivji/inst/extdata/train_glove_lstm.rds")
+```
+
+```{r}
+train_conv_1d(epochs = 10,
+              model_save_path = "sentiment140.amangal.rajivji/inst/extdata/train_no_glove_conv_1d.rds")
+```
+
+```{r}
+train_conv1d_with_glove(epochs = 10,
+                        glove_file_path = "~/Desktop/machine-learning/keras/glove.6B/glove.6B.100d.txt",
+                        model_save_path = "sentiment140.amangal.rajivji/inst/extdata/train_glove_conv_1d.rds")
+```
+
+```{r}
+predict_polarity_keras(model_load_path = "sentiment140.amangal.rajivji/inst/extdata/train_no_glove_lstm.rds")
+```
+
+
+```{r}
+predict_polarity_keras(model_load_path = "sentiment140.amangal.rajivji/inst/extdata/train_glove_lstm.rds")
+```
+
+```{r}
+predict_polarity_keras(model_load_path = "sentiment140.amangal.rajivji/inst/extdata/train_no_glove_conv_1d.rds")
+```
+
+```{r}
+predict_polarity_keras(model_load_path = "sentiment140.amangal.rajivji/inst/extdata/train_glove_conv_1d.rds")
+```
+
+
+
