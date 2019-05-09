@@ -13,6 +13,21 @@ knitr::opts_chunk$set(echo = TRUE)
 library(devtools)
 ```
 
+## Build Steps
+
+https://www.r-bloggers.com/building-a-website-with-pkgdown-a-short-guide/
+
+```{r}
+usethis::use_readme_rmd()
+```
+
+```{r}
+usethis::use_news_md()
+```
+
+
+==========
+
 ```{r}
 pkgName <- "deepSentimentR"
 ```
