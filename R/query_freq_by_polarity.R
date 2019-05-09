@@ -31,13 +31,15 @@
 #'                           "text" = c("Sample tweet 1 from user1",
 #'                                      "Sample tweet 2 from user1",
 #'                                      "Sample tweet 1 from user2"),
-#'                          "polarity" = c(0, 4, 4))
+#'                          "polarity" = c(0, 4, 4),
+#'                          "id" = c(1,2,3))
 #' freq_by_polarity(data = sample_data,
 #'                  user_list = c("", "test_user1"),
 #'                  start_date_time = lubridate::as_datetime("2009-03-30"),
 #'                  end_date_time = lubridate::as_datetime("2009-06-30"),
 #'                  keyword_list = c("tweet 2"))
 #'
+utils::globalVariables(c("sentiment140_train"))
 freq_by_polarity <- function(data = sentiment140_train,
                              user_list,
                              start_date_time,

@@ -69,11 +69,17 @@ validate_list <- function(input_list, message) {
 #'
 validate_time_range <- function(start_date_time, end_date_time) {
   #both start_date_time and end_date_time should be specified.
-  if ((missing(start_date_time) && !missing(end_date_time)) || (!missing(start_date_time) && missing(end_date_time))) {
+  if ((missing(start_date_time) &&
+       !missing(end_date_time)) ||
+      (!missing(start_date_time) &&
+       missing(end_date_time))) {
     stop("validate_time_range: Aborting because both start_date_time and end_date_time are required.")
   }
   # make sure the date/time data type is correct
-  if ((!missing(start_date_time) && !is.POSIXct(start_date_time)) || (!missing(end_date_time) && !is.POSIXct(end_date_time))) {
+  if ((!missing(start_date_time) &&
+       !lubridate::is.POSIXct(start_date_time)) ||
+      (!missing(end_date_time) &&
+       !lubridate::is.POSIXct(end_date_time))) {
     stop("validate_time_range: Aborting because start/end date time is NOT of POSIXct type")
   }
 }

@@ -19,7 +19,9 @@ pkgName <- "deepSentimentR"
 ```{r}
 usethis::create_package(path = pkgName, rstudio = FALSE)
 ```
-
+```{r}
+usethis::use_data_raw()
+```
 ```{r}
 setwd(pkgName)
 usethis::use_package("ggplot2", type = "Imports")
@@ -30,20 +32,15 @@ devtools::document()
 ```
 
 ```{r}
-usethis::use_data_raw()
-```
-
-
-```{r}
 devtools::check()
 ```
 
 ```{r}
-devtools::build(pkg = "sentiment140.amangal.rajivji")
+devtools::build()
 ```
 
 ```{r}
-devtools::install(pkg = "sentiment140.amangal.rajivji")
+devtools::install()
 ```
 
 ```{r}
