@@ -22,7 +22,7 @@ usethis::use_readme_rmd()
 ```
 
 ```{r}
-usethis::use_news_md()
+usethis::use_vignette("deepSentimentR")
 ```
 
 
@@ -69,7 +69,6 @@ sentiment140_train %>%
 
 
 ```{r}
-library(sentiment140.amangal.rajivji)
 sentiment140_train %>% 
   freq_by_polarity(user_list = c("", "DarkPiano"), 
                    start_date_time = lubridate::as_datetime("2009-05-30"),
@@ -82,7 +81,7 @@ sentiment140_train %>%
 ```{r}
 usethis::use_testthat()
 usethis::use_test(name = "query_freq_by_polarity")
-devtools::test("sentiment140.amangal.rajivji")
+devtools::test()
 ```
 
 ```{r}
@@ -92,28 +91,24 @@ usethis::use_travis()
 # POS Tagging
 
 ```{r}
-library(sentiment140.amangal.rajivji)
 pos_tag()
 ```
 
 # Time series
 
 ```{r}
-library(sentiment140.amangal.rajivji)
 time_series()
 ```
 
 # Bigram Network
 
 ```{r}
-library(sentiment140.amangal.rajivji)
 bigram_network()
 ```
 
 # Word Correlation Network
 
 ```{r}
-library(sentiment140.amangal.rajivji)
 word_cor_network()
 ```
 
@@ -121,57 +116,55 @@ word_cor_network()
 
 ```{r}
 library(rhub)
-rhub::check_for_cran(check_args = "--as-cran", path = "sentiment140.amangal.rajivji")
+rhub::check_for_cran(check_args = "--as-cran", path = ".")
 ```
 
 # Vignettes
 
 ```{r}
 usethis::use_vignette("Report")
-devtools::build_vignettes(pkg = "sentiment140.amangal.rajivji")
+devtools::build_vignettes()
 ```
 
 
 # Keras
 
 ```{r}
-library(sentiment140.amangal.rajivji)
-
 train_lstm(epochs = 10,
-           model_save_path = "sentiment140.amangal.rajivji/inst/extdata/train_no_glove_lstm.rds")
+           model_save_path = "deepSentimentR/inst/extdata/train_no_glove_lstm.rds")
 ```
 ```{r}
 train_lstm_with_glove(epochs = 10,
                       glove_file_path = "~/Desktop/machine-learning/keras/glove.6B/glove.6B.100d.txt",
-                      model_save_path = "sentiment140.amangal.rajivji/inst/extdata/train_glove_lstm.rds")
+                      model_save_path = "deepSentimentR/inst/extdata/train_glove_lstm.rds")
 ```
 
 ```{r}
 train_conv_1d(epochs = 10,
-              model_save_path = "sentiment140.amangal.rajivji/inst/extdata/train_no_glove_conv_1d.rds")
+              model_save_path = "deepSentimentR/inst/extdata/train_no_glove_conv_1d.rds")
 ```
 
 ```{r}
 train_conv1d_with_glove(epochs = 10,
                         glove_file_path = "~/Desktop/machine-learning/keras/glove.6B/glove.6B.100d.txt",
-                        model_save_path = "sentiment140.amangal.rajivji/inst/extdata/train_glove_conv_1d.rds")
+                        model_save_path = "deepSentimentR/inst/extdata/train_glove_conv_1d.rds")
 ```
 
 ```{r}
-predict_polarity_keras(model_load_path = "sentiment140.amangal.rajivji/inst/extdata/train_no_glove_lstm.rds")
+predict_polarity_keras(model_load_path = "deepSentimentR/inst/extdata/train_no_glove_lstm.rds")
 ```
 
 
 ```{r}
-predict_polarity_keras(model_load_path = "sentiment140.amangal.rajivji/inst/extdata/train_glove_lstm.rds")
+predict_polarity_keras(model_load_path = "deepSentimentR/inst/extdata/train_glove_lstm.rds")
 ```
 
 ```{r}
-predict_polarity_keras(model_load_path = "sentiment140.amangal.rajivji/inst/extdata/train_no_glove_conv_1d.rds")
+predict_polarity_keras(model_load_path = "deepSentimentR/inst/extdata/train_no_glove_conv_1d.rds")
 ```
 
 ```{r}
-predict_polarity_keras(model_load_path = "sentiment140.amangal.rajivji/inst/extdata/train_glove_conv_1d.rds")
+predict_polarity_keras(model_load_path = "deepSentimentR/inst/extdata/train_glove_conv_1d.rds")
 ```
 
 

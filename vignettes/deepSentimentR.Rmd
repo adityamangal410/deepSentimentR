@@ -1,0 +1,28 @@
+---
+title: "deepSentimentR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{deepSentimentR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(dplyr)
+library(deepSentimentR)
+
+data("sentiment140_train")
+
+sentiment140_train %>% 
+  freq_by_polarity(user_list = c("", "mcraddictal"), 
+                   start_date_time = lubridate::as_datetime("2009-05-30"),
+                   end_date_time = lubridate::as_datetime("2009-06-03"),
+                   keyword_list = c(""))
+```
