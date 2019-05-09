@@ -14,7 +14,7 @@ library(devtools)
 ```
 
 ```{r}
-pkgName <- "sentiment140.amangal.rajivji"
+pkgName <- "deepSentimentR"
 ```
 ```{r}
 usethis::create_package(path = pkgName, rstudio = FALSE)
@@ -26,29 +26,7 @@ usethis::use_package("ggplot2", type = "Imports")
 ```
 
 ```{r}
-colNames <- c("polarity",
-              "id",
-              "date",
-              "query",
-              "user",
-              "text")
-sentiment140_train <- read_csv("~/Downloads/trainingandtestdata/training.1600000.processed.noemoticon.csv", col_names = colNames)
-sentiment140_train %>% 
-  glimpse()
-```
-
-```{r}
-sentiment140_test <- read_csv("~/Downloads/trainingandtestdata/testdata.manual.2009.06.14.csv", col_names = colNames)
-sentiment140_test %>% 
-  glimpse()
-```
-
-```{r}
-setwd(pkgName)
-usethis::use_data(sentiment140_train, sentiment140_test, overwrite = TRUE)
-```
-```{r}
-devtools::document(pkg = "sentiment140.amangal.rajivji")
+devtools::document()
 ```
 
 ```{r}
@@ -57,7 +35,7 @@ usethis::use_data_raw()
 
 
 ```{r}
-devtools::check(pkg = "sentiment140.amangal.rajivji")
+devtools::check()
 ```
 
 ```{r}

@@ -4,8 +4,25 @@ Title: Package to Analyze Sentiment Datasets
 Version: 0.1.0
 Author: Aditya Mangal
 Maintainer: Aditya Mangal <adityamangal410@gmail.com>
+Depends: R (>= 3.5)
 Description: Query, View and Analyze Sentiment datasets, for example the Sentiment140 dataset.
     (<http://help.sentiment140.com/for-students/>).
 License: GPL-3 | file LICENSE
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.1.1
+Roxygen: list(markdown = TRUE)
+Imports:
+    readr,
+    ggplot2,
+    dplyr,
+    stringr,
+    magrittr,
+    rlang,
+    lubridate
+Suggests: 
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+
