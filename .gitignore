@@ -4,3 +4,4 @@
 .Ruserdata
 data-raw/*.bz2
 inst/doc
+docs/
