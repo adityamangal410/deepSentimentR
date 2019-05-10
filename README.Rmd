@@ -23,6 +23,8 @@ knitr::opts_chunk$set(
 
 The goal of deepSentimentR is to provide functionality to query, view and analyze sentiment datasets. 
 
+https://adityamangal410.github.io/deepSentimentR/
+
 ## Installation
 
 <!--

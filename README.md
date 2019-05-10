@@ -17,6 +17,8 @@ status](https://travis-ci.org/adityamangal410/deepSentimentR.svg?branch=master)]
 The goal of deepSentimentR is to provide functionality to query, view
 and analyze sentiment datasets.
 
+<https://adityamangal410.github.io/deepSentimentR/>
+
 ## Installation
 
 <!--
