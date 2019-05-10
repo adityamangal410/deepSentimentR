@@ -12,6 +12,8 @@ public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostat
 GPL-3](https://img.shields.io/badge/License-GPLv3-yellow.svg)](https://opensource.org/licenses/GPL-3.0)
 [![Build
 Status](https://travis-ci.com/adityamangal410/deepSentimentR.svg?branch=master)](https://travis-ci.com/adityamangal410/deepSentimentR)
+[![Travis build
+status](https://travis-ci.org/adityamangal410/deepSentimentR.svg?branch=master)](https://travis-ci.org/adityamangal410/deepSentimentR)
 <!-- badges: end -->
 
 The goal of deepSentimentR is to provide functionality to query, view
