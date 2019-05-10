@@ -42,24 +42,13 @@ usethis::use_pkgdown()
 pkgdown::build_site()
 ```
 
-```{r}
-devtools::install_github("ropenscilabs/travis")
-travis::use_travis_deploy()
-```
 
-ssh-keygen -t rsa -b 4096 -C "adityamangal410@gmail.com"
-pbcopy < id_rsa.pub
-pbcopy < id_rsa
-
-<!--Finished adding deploy keys on GitHub for repo adityamangal410/deepSentimentR.
-✔ Successfully added public deploy key travis+tic' to GitHub for adityamangal410/deepSentimentR. 
-❯  You should receive a confirmation e-mail from GitHub.
-❯  Delete the key in the repository's settings to revoke access for that key or when you no longer need it.
-Finished updating private environment variable id_rsa for adityamangal410/deepSentimentR on Travis CI.
-✔ Successfully added private deploy key to adityamangal410/deepSentimentR as secure environment variable id_rsa to Travis CI.-->
+make sure you are working on travis-ci.org
 
 ```{r}
 usethis::use_pkgdown_travis()
+devtools::install_github("ropenscilabs/travis")
+travis::use_travis_deploy()
 ```
 
 
