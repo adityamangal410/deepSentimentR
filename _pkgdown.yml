@@ -1,1 +1,8 @@
 destination: docs
+title: deepSentimentR
+url: https://adityamangal410.github.io/deepSentimentR/
+template:
+  params:
+    bootswatch: flatly
+    ganalytics: UA-78062737-4
+

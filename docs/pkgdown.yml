@@ -3,4 +3,7 @@ pkgdown: 1.3.0
 pkgdown_sha: ~
 articles:
   deepSentimentR: deepSentimentR.html
+urls:
+  reference: https://adityamangal410.github.io/deepSentimentR//reference
+  article: https://adityamangal410.github.io/deepSentimentR//articles
 

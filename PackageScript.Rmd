@@ -33,6 +33,10 @@ usethis::use_github_links()
 usethis::use_pkgdown()
 ```
 
+```{r}
+pkgdown::build_site()
+```
+
 ==========
 
 ```{r}
