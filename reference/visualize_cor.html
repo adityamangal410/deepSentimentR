@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generate time series plots to analyze data based on filters — time_series • deepSentimentR</title>
+<title>Generate network plot for words and their pairwise correlation — visualize_cor • deepSentimentR</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Generate time series plots to analyze data based on filters — time_series" />
+<meta property="og:title" content="Generate network plot for words and their pairwise correlation — visualize_cor" />
 
-<meta property="og:description" content="Generate time series plots to analyze given data with filters and visualize over polarity and return the raw data, date/day aggregate data and a plots for the same." />
+<meta property="og:description" content="Generate network plot for words and their correlations with edge alpha relative to correlation." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,103 +112,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Generate time series plots to analyze data based on filters</h1>
-    <small class="dont-index">Source: <a href='https://github.com/adityamangal410/deepSentimentR/blob/master/R/time_series.R'><code>R/time_series.R</code></a></small>
-    <div class="hidden name"><code>time_series.Rd</code></div>
+    <h1>Generate network plot for words and their pairwise correlation</h1>
+    <small class="dont-index">Source: <a href='https://github.com/adityamangal410/deepSentimentR/blob/master/R/word_cor_network.R'><code>R/word_cor_network.R</code></a></small>
+    <div class="hidden name"><code>visualize_cor.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Generate time series plots to analyze given data with filters and visualize over polarity and return the raw data, date/day aggregate data and a <code>plots</code> for the same.</p>
+    <p>Generate network plot for words and their correlations with edge alpha relative to correlation.</p>
     
     </div>
 
+    <pre class="usage"><span class='fu'>visualize_cor</span>(<span class='no'>cors</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>the sentiment140 train or test data containing variables <code>user</code> for username, <code>date</code> for date and
-<code>text</code> for text of the tweet.</p></td>
-    </tr>
-    <tr>
-      <th>user_list</th>
-      <td><p>a vector of users for which to filter the dataset</p></td>
-    </tr>
-    <tr>
-      <th>start_date_time</th>
-      <td><p>input start_date_time in POSIXct format on which to filter the dataset</p></td>
-    </tr>
-    <tr>
-      <th>end_date_time</th>
-      <td><p>input end_date_time in POSIXct format on which to filter the dataset</p></td>
-    </tr>
-    <tr>
-      <th>keyword_list</th>
-      <td><p>a list of string keywords on which to filter the dataset</p></td>
+      <th>cors</th>
+      <td><p>dataframe containing words and their pairwise correlation</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a list object with <code>raw</code> filtered dataframe, <code>date_counts</code> aggregated dataframe that holds the frequency counts of date by polarity, <code>day_counts</code> aggregated dataframe that holds the frequency counts of day by polarity and a <code>plots</code> depicting their relationship.</p>
+    <p>plot object with network visualization</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>time_series</span>()</div><div class='output co'>#&gt; $raw
-#&gt; # A tibble: 50,000 x 14
-#&gt;    polarity      id date                query user  text  nouns adjectives
-#&gt;    &lt;chr&gt;      &lt;int&gt; &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;      &lt;int&gt;
-#&gt;  1 Negative  2.01e9 2009-06-03 09:26:56 NO_Q… Nina… n fe…     3          0
-#&gt;  2 Positive  1.93e9 2009-05-27 05:45:38 NO_Q… RBCK… @ong…    14          1
-#&gt;  3 Negative  2.05e9 2009-06-06 02:27:00 NO_Q… t3ll… an m…     4          2
-#&gt;  4 Negative NA      2009-06-19 18:58:49 NO_Q… Joyc… nd n…     7          0
-#&gt;  5 Positive  2.07e9 2009-06-07 17:56:22 NO_Q… Shau… @yan…     4          3
-#&gt;  6 Positive  1.56e9 2009-04-19 19:00:50 NO_Q… shor… @ust…     4          1
-#&gt;  7 Positive  1.84e9 2009-05-18 12:35:39 NO_Q… molt… orni…     5          0
-#&gt;  8 Negative  2.07e9 2009-06-07 21:14:40 NO_Q… chel… Pod …     3          0
-#&gt;  9 Negative NA      2009-06-17 07:38:41 NO_Q… call… an't…     6          1
-#&gt; 10 Negative NA      2009-06-25 08:50:36 NO_Q… Love… " wi…     2          0
-#&gt; # … with 49,990 more rows, and 6 more variables: prepositions &lt;int&gt;,
-#&gt; #   articles &lt;int&gt;, pronouns &lt;int&gt;, verbs &lt;int&gt;, adverbs &lt;int&gt;,
-#&gt; #   interjections &lt;int&gt;
-#&gt; 
-#&gt; $date_counts
-#&gt; # A tibble: 73 x 3
-#&gt;    date       polarity count
-#&gt;    &lt;date&gt;     &lt;fct&gt;    &lt;int&gt;
-#&gt;  1 2009-04-07 Negative   265
-#&gt;  2 2009-04-07 Positive   336
-#&gt;  3 2009-04-18 Negative   225
-#&gt;  4 2009-04-18 Positive   271
-#&gt;  5 2009-04-19 Negative   407
-#&gt;  6 2009-04-19 Positive   578
-#&gt;  7 2009-04-20 Negative   218
-#&gt;  8 2009-04-20 Positive   313
-#&gt;  9 2009-04-21 Negative   131
-#&gt; 10 2009-04-21 Positive   203
-#&gt; # … with 63 more rows
-#&gt; 
-#&gt; $day_counts
-#&gt; # A tibble: 53 x 3
-#&gt;      day polarity count
-#&gt;    &lt;int&gt; &lt;fct&gt;    &lt;int&gt;
-#&gt;  1     1 Negative  1278
-#&gt;  2     1 Positive  1828
-#&gt;  3     2 Negative  1357
-#&gt;  4     2 Positive  1996
-#&gt;  5     3 Negative  1096
-#&gt;  6     3 Positive  1611
-#&gt;  7     4 Negative   427
-#&gt;  8     4 Positive   604
-#&gt;  9     5 Negative   440
-#&gt; 10     5 Positive   670
-#&gt; # … with 43 more rows
-#&gt; 
-#&gt; $plot_date</div><div class='img'><img src='time_series-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; 
-#&gt; $plot_day</div><div class='img'><img src='time_series-2.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; </div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -216,9 +146,7 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
   </div>
 </div>
