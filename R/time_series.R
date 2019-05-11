@@ -23,15 +23,14 @@
 #' @keywords analysis visualization
 #'
 #' @examples
-#' data(sentiment140_train)
-#' time_series(user_list = c("DarkPiano"))
+#' time_series()
 #'
 utils::globalVariables(c("sentiment140_train"))
 time_series <- function(data = sentiment140_train,
-                             user_list,
-                             start_date_time,
-                             end_date_time,
-                             keyword_list) {
+                        user_list,
+                        start_date_time,
+                        end_date_time,
+                        keyword_list) {
 
   validate_sentiment_data_frame(data = data)
   validate_list(input_list = user_list, message="Aborting, invalid user list")

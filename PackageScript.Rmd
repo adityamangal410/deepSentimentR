@@ -59,6 +59,9 @@ source("data-raw/DATASET.R")
 ```{r}
 usethis::use_testthat()
 usethis::use_test(name = "query_freq_by_polarity")
+usethis::use_test(name = "time_series")
+usethis::use_test(name = "bigram_network")
+usethis::use_test(name = "word_cor_network")
 ```
 
 ```{r}
@@ -97,12 +100,14 @@ time_series()
 # Bigram Network
 
 ```{r}
+devtools::load_all()
 bigram_network()
 ```
 
 # Word Correlation Network
 
 ```{r}
+devtools::load_all()
 word_cor_network()
 ```
 

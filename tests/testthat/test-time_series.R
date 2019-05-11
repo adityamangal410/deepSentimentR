@@ -29,8 +29,8 @@ test_that("user filter works", {
 
 test_that("date filter works", {
   expect_equal(2, dim(time_series(test_data,
-                              start_date_time = as_datetime("2009-03-31"),
-                              end_date_time = as_datetime("2009-04-06"))$raw)[1])
+                                  start_date_time = as_datetime("2009-03-31"),
+                                  end_date_time = as_datetime("2009-04-06"))$raw)[1])
 })
 
 test_that("keyword filter works", {
@@ -39,43 +39,43 @@ test_that("keyword filter works", {
 
 test_that("all filters work", {
   expect_equal(1, dim(time_series(test_data,
-                              user_list = c("test_user1"),
-                              start_date_time = as_datetime("2009-03-31"),
-                              end_date_time = as_datetime("2009-04-06"),
-                              keyword_list = c("tweet 1"))$raw)[1])
+                                  user_list = c("test_user1"),
+                                  start_date_time = as_datetime("2009-03-31"),
+                                  end_date_time = as_datetime("2009-04-06"),
+                                  keyword_list = c("tweet 1"))$raw)[1])
 })
 
 
 test_that("should fail for non-date as date arguments", {
   expect_error(time_series(test_data,
-                       start_date_time = "2019",
-                       end_date_time = "2020"))
+                           start_date_time = "2019",
+                           end_date_time = "2020"))
 })
 
 test_that("only start date is given without end date", {
   expect_error(time_series(test_data,
-                       start_date_time = as_datetime("2009-03-31")))
+                           start_date_time = as_datetime("2009-03-31")))
 })
 
 test_that("keyword_list should be a valid list", {
   expect_error(time_series(test_data,
-                       keyword_list = NULL))
+                           keyword_list = NULL))
 })
 
 test_that("user_list should be a valid list", {
   expect_error(time_series(test_data,
-                       user_list= NULL))
+                           user_list= NULL))
 })
 
 test_that("empty keyword list should give full data frame", {
   result <- time_series(test_data,
-                    keyword_list=list())
+                        keyword_list=list())
   expect_equal(dim(result$raw)[1], dim(test_data)[1])
 })
 
 test_that("empty user list should give full data frame", {
   result <- time_series(test_data,
-                    user_list=list())
+                        user_list=list())
   expect_equal(dim(result$raw)[1], dim(test_data)[1])
 })
 

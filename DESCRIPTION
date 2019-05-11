@@ -19,7 +19,12 @@ Imports:
     stringr,
     magrittr,
     rlang,
-    lubridate
+    lubridate,
+    tidyr,
+    tidytext,
+    igraph,
+    ggraph,
+    widyr
 Suggests: 
     testthat,
     knitr,

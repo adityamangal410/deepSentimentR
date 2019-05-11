@@ -34,3 +34,11 @@ sentiment140_train %>%
 time_series()
 ```
 
+```{r bigram_network}
+bigram_network()
+```
+
+```{r word_cor_network}
+word_cor_network()
+```
+
