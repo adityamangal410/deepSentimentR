@@ -13,7 +13,7 @@
 #'
 #' @export
 #'
-#' @importFrom ggplot2 ggplot aes geom_col labs theme_set theme_light
+#' @importFrom ggplot2 ggplot aes labs theme_set theme_light geom_point geom_segment coord_flip element_blank
 #' @importFrom magrittr %>%
 #' @importFrom dplyr mutate filter count
 #' @importFrom stringr str_c str_detect
@@ -69,11 +69,29 @@ freq_by_polarity <- function(data = sentiment140_train,
   result$frequency <- frequency
 
   ggplot2::theme_set(ggplot2::theme_light())
-  p <- ggplot2::ggplot(data = frequency, ggplot2::aes(x = .data$polarity, y = .data$counts)) +
-    ggplot2::geom_col(fill = "cyan") +
-    ggplot2::labs(x = "Polarity (0=Negative, 4=Positive)",
-                  y = "Frequency Count",
-                  title = "Frequency Count vs Polarity")
+  #p <- ggplot2::ggplot(data = frequency, ggplot2::aes(x = .data$polarity, y = .data$counts)) +
+  #  ggplot2::geom_col(fill = "cyan") +
+  #  ggplot2::labs(x = "Polarity (0=Negative, 4=Positive)",
+  #                y = "Frequency Count",
+  #                title = "Frequency Count vs Polarity")
+
+   p <- ggplot2::ggplot(data = frequency,
+                        ggplot2::aes(x = .data$polarity,
+                                     y = .data$counts)) +
+     ggplot2::geom_segment( ggplot2::aes(x=.data$polarity,
+                                         xend=.data$polarity,
+                                         y=0,
+                                         yend=.data$counts),
+                            color="skyblue",
+                            size=1) +
+     ggplot2::geom_point( color="blue", size=4, alpha=0.6) +
+     ggplot2::coord_flip() +
+     ggplot2::theme(panel.grid.minor.y = ggplot2::element_blank(),
+                    panel.grid.major.y = ggplot2::element_blank(),
+                    legend.position="none") +
+     ggplot2::labs(x = "",
+                   y = "Frequency Count",
+                   title = "Number of tweets by polarity")
 
   result$plot <- p
 

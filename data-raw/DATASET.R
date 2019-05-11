@@ -19,7 +19,9 @@ filter_and_sub_sample_data <- function(data, data_size=50000) {
            text = str_replace(text, "\\s+", " "),
            text = str_replace(text, "[^:|[:punct:]+]", ""),
            text = str_replace(text, " [^[:alnum:]+] ", " ")) %>%
-    filter(nchar(text) > 20)
+    filter(nchar(text) > 20,
+           polarity != 2) %>%
+    mutate(polarity = ifelse(polarity == 4, "Positive", "Negative"))
 
   if (dim(data)[1] < data_size) {
     data_size = dim(data)[1]
@@ -47,8 +49,7 @@ usethis::use_data(sentiment140_train, overwrite = TRUE)
 #'
 sentiment140_test <- readr::read_csv("./data-raw/sentiment140_test_pos_tagged.csv.bz2")
 sentiment140_test <- sentiment140_test %>%
-  filter_and_sub_sample_data() %>%
-  filter(polarity != 2)
+  filter_and_sub_sample_data()
 
 
 usethis::use_data(sentiment140_test, overwrite = TRUE)

@@ -48,7 +48,6 @@ This is a basic example which shows you how to solve a common problem:
 ```{r example}
 library(dplyr)
 library(deepSentimentR)
-## basic example code
 data("sentiment140_train")
 sentiment140_train %>% 
   freq_by_polarity(user_list = c("", "mcraddictal"), 
