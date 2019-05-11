@@ -10,7 +10,10 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  message = FALSE, 
+  warning = FALSE,
+  error = FALSE
 )
 ```
 
@@ -26,3 +29,8 @@ sentiment140_train %>%
                    end_date_time = lubridate::as_datetime("2009-06-03"),
                    keyword_list = c(""))
 ```
+
+```{r time_series}
+time_series()
+```
+

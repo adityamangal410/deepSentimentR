@@ -19,8 +19,6 @@ status](https://codecov.io/gh/adityamangal410/deepSentimentR/branch/master/graph
 The goal of deepSentimentR is to provide functionality to query, view
 and analyze sentiment datasets.
 
-<https://adityamangal410.github.io/deepSentimentR/>
-
 ## Installation
 
 <!--
@@ -75,3 +73,6 @@ sentiment140_train %>%
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
+
+Check out full reference and examples at -
+<https://adityamangal410.github.io/deepSentimentR/>

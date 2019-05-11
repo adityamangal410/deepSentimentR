@@ -69,13 +69,7 @@ freq_by_polarity <- function(data = sentiment140_train,
   result$frequency <- frequency
 
   ggplot2::theme_set(ggplot2::theme_light())
-  #p <- ggplot2::ggplot(data = frequency, ggplot2::aes(x = .data$polarity, y = .data$counts)) +
-  #  ggplot2::geom_col(fill = "cyan") +
-  #  ggplot2::labs(x = "Polarity (0=Negative, 4=Positive)",
-  #                y = "Frequency Count",
-  #                title = "Frequency Count vs Polarity")
-
-   p <- ggplot2::ggplot(data = frequency,
+  p <- ggplot2::ggplot(data = frequency,
                         ggplot2::aes(x = .data$polarity,
                                      y = .data$counts)) +
      ggplot2::geom_segment( ggplot2::aes(x=.data$polarity,

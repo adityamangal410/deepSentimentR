@@ -3,8 +3,8 @@
 \docType{data}
 \name{sentiment140_train}
 \alias{sentiment140_train}
-\title{A \code{sentiment140_train} training dataset from Sentiment140}
+\title{\code{sentiment140_train} training dataset from Sentiment140 (\url{http://help.sentiment140.com/for-students/})}
 \description{
-A \code{sentiment140_train} dataset used as training dataset for sentiment140 analysis.
+\code{sentiment140_train} dataset used as training dataset for sentiment analysis.
 }
 \keyword{data}

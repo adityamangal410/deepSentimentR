@@ -90,6 +90,7 @@ pos_tag()
 # Time series
 
 ```{r}
+devtools::load_all()
 time_series()
 ```
 
