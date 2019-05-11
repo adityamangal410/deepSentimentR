@@ -106,36 +106,35 @@ install.packages("deepSentimentR")
 <p>This is a basic example which shows you how to solve a common problem:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(deepSentimentR)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">## basic example code</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(<span class="st">"sentiment140_train"</span>)</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">sentiment140_train <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="reference/freq_by_polarity.html">freq_by_polarity</a></span>(<span class="dt">user_list =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">""</span>, <span class="st">"mcraddictal"</span>), </a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">                   <span class="dt">start_date_time =</span> lubridate<span class="op">::</span><span class="kw"><a href="http://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span>(<span class="st">"2009-05-30"</span>),</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">                   <span class="dt">end_date_time =</span> lubridate<span class="op">::</span><span class="kw"><a href="http://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span>(<span class="st">"2009-06-03"</span>),</a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">                   <span class="dt">keyword_list =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">""</span>))</a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; $raw</span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; # A tibble: 8 x 14</span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt;   polarity     id date                query user  text  nouns adjectives</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt;      &lt;int&gt;  &lt;int&gt; &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;      &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 1        0 1.99e9 2009-06-01 16:44:55 NO_Q… mcra… @oy_…     2          1</span></a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; 2        0 1.99e9 2009-06-01 06:34:38 NO_Q… mcra… @hem…     3          2</span></a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt; 3        0 1.97e9 2009-05-30 05:32:26 NO_Q… mcra… @wes…     1          2</span></a>
-<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co">#&gt; 4        4 1.98e9 2009-05-31 17:31:47 NO_Q… mcra… nd I…     3          1</span></a>
-<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="co">#&gt; 5        0 1.98e9 2009-05-31 15:39:18 NO_Q… mcra… @CRs…     3          1</span></a>
-<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt; 6        0 1.97e9 2009-05-30 13:19:07 NO_Q… mcra… @oy_…     2          2</span></a>
-<a class="sourceLine" id="cb2-20" data-line-number="20"><span class="co">#&gt; 7        4 1.97e9 2009-05-30 01:31:51 NO_Q… mcra… @kit…     2          1</span></a>
-<a class="sourceLine" id="cb2-21" data-line-number="21"><span class="co">#&gt; 8        4 1.98e9 2009-05-31 00:06:28 NO_Q… mcra… @sca…     5          1</span></a>
-<a class="sourceLine" id="cb2-22" data-line-number="22"><span class="co">#&gt; # … with 6 more variables: prepositions &lt;int&gt;, articles &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb2-23" data-line-number="23"><span class="co">#&gt; #   pronouns &lt;int&gt;, verbs &lt;int&gt;, adverbs &lt;int&gt;, interjections &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb2-24" data-line-number="24"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-25" data-line-number="25"><span class="co">#&gt; $frequency</span></a>
-<a class="sourceLine" id="cb2-26" data-line-number="26"><span class="co">#&gt; # A tibble: 2 x 2</span></a>
-<a class="sourceLine" id="cb2-27" data-line-number="27"><span class="co">#&gt;   polarity counts</span></a>
-<a class="sourceLine" id="cb2-28" data-line-number="28"><span class="co">#&gt;   &lt;fct&gt;     &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb2-29" data-line-number="29"><span class="co">#&gt; 1 0             5</span></a>
-<a class="sourceLine" id="cb2-30" data-line-number="30"><span class="co">#&gt; 2 4             3</span></a>
-<a class="sourceLine" id="cb2-31" data-line-number="31"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-32" data-line-number="32"><span class="co">#&gt; $plot</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(<span class="st">"sentiment140_train"</span>)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">sentiment140_train <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="reference/freq_by_polarity.html">freq_by_polarity</a></span>(<span class="dt">user_list =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">""</span>, <span class="st">"mcraddictal"</span>), </a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">                   <span class="dt">start_date_time =</span> lubridate<span class="op">::</span><span class="kw"><a href="http://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span>(<span class="st">"2009-05-30"</span>),</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">                   <span class="dt">end_date_time =</span> lubridate<span class="op">::</span><span class="kw"><a href="http://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span>(<span class="st">"2009-06-03"</span>),</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">                   <span class="dt">keyword_list =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">""</span>))</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; $raw</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; # A tibble: 8 x 14</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt;   polarity     id date                query user  text  nouns adjectives</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt;   &lt;chr&gt;     &lt;int&gt; &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;      &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt; 1 Negative 1.99e9 2009-06-01 16:44:55 NO_Q… mcra… @oy_…     2          1</span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 2 Negative 1.99e9 2009-06-01 06:34:38 NO_Q… mcra… @hem…     3          2</span></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; 3 Negative 1.97e9 2009-05-30 05:32:26 NO_Q… mcra… @wes…     1          2</span></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt; 4 Positive 1.98e9 2009-05-31 17:31:47 NO_Q… mcra… nd I…     3          1</span></a>
+<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co">#&gt; 5 Negative 1.98e9 2009-05-31 15:39:18 NO_Q… mcra… @CRs…     3          1</span></a>
+<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="co">#&gt; 6 Negative 1.97e9 2009-05-30 13:19:07 NO_Q… mcra… @oy_…     2          2</span></a>
+<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt; 7 Positive 1.97e9 2009-05-30 01:31:51 NO_Q… mcra… @kit…     2          1</span></a>
+<a class="sourceLine" id="cb2-20" data-line-number="20"><span class="co">#&gt; 8 Positive 1.98e9 2009-05-31 00:06:28 NO_Q… mcra… @sca…     5          1</span></a>
+<a class="sourceLine" id="cb2-21" data-line-number="21"><span class="co">#&gt; # … with 6 more variables: prepositions &lt;int&gt;, articles &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-22" data-line-number="22"><span class="co">#&gt; #   pronouns &lt;int&gt;, verbs &lt;int&gt;, adverbs &lt;int&gt;, interjections &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb2-23" data-line-number="23"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-24" data-line-number="24"><span class="co">#&gt; $frequency</span></a>
+<a class="sourceLine" id="cb2-25" data-line-number="25"><span class="co">#&gt; # A tibble: 2 x 2</span></a>
+<a class="sourceLine" id="cb2-26" data-line-number="26"><span class="co">#&gt;   polarity counts</span></a>
+<a class="sourceLine" id="cb2-27" data-line-number="27"><span class="co">#&gt;   &lt;fct&gt;     &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb2-28" data-line-number="28"><span class="co">#&gt; 1 Negative      5</span></a>
+<a class="sourceLine" id="cb2-29" data-line-number="29"><span class="co">#&gt; 2 Positive      3</span></a>
+<a class="sourceLine" id="cb2-30" data-line-number="30"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-31" data-line-number="31"><span class="co">#&gt; $plot</span></a></code></pre></div>
 <p><img src="reference/figures/README-example-1.png" width="100%"></p>
 </div>
 </div>
