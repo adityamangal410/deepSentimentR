@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 # deepSentimentR
 
 <!-- badges: start -->
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![License: GPL-3](https://img.shields.io/badge/License-GPLv3-yellow.svg)](https://opensource.org/licenses/GPL-3.0) [![Travis build status](https://travis-ci.org/adityamangal410/deepSentimentR.svg?branch=master)](https://travis-ci.org/adityamangal410/deepSentimentR)
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![License: GPL-3](https://img.shields.io/badge/License-GPLv3-yellow.svg)](https://opensource.org/licenses/GPL-3.0) [![Travis build status](https://travis-ci.org/adityamangal410/deepSentimentR.svg?branch=master)](https://travis-ci.org/adityamangal410/deepSentimentR) [![Coverage status](https://codecov.io/gh/adityamangal410/deepSentimentR/branch/master/graph/badge.svg)](https://codecov.io/github/adityamangal410/deepSentimentR?branch=master)
 <!-- badges: end -->
 
 The goal of deepSentimentR is to provide functionality to query, view and analyze sentiment datasets. 

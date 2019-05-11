@@ -23,7 +23,8 @@ Imports:
 Suggests: 
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    covr
 VignetteBuilder: knitr
 URL: https://github.com/adityamangal410/deepSentimentR
 BugReports: https://github.com/adityamangal410/deepSentimentR/issues

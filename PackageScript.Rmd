@@ -51,68 +51,35 @@ devtools::install_github("ropenscilabs/travis")
 travis::use_travis_deploy()
 ```
 
-
-==========
-
-```{r}
-pkgName <- "deepSentimentR"
-```
-```{r}
-usethis::create_package(path = pkgName, rstudio = FALSE)
-```
 ```{r}
 usethis::use_data_raw()
-```
-```{r}
-setwd(pkgName)
-usethis::use_package("ggplot2", type = "Imports")
+source("data-raw/DATASET.R")
 ```
 
 ```{r}
-devtools::document()
+usethis::use_testthat()
+usethis::use_test(name = "query_freq_by_polarity")
 ```
 
 ```{r}
-devtools::check()
+usethis::use_coverage()
 ```
 
-```{r}
-devtools::build()
-```
 
-```{r}
-devtools::install()
-```
-
-```{r}
-rm(sentiment140_train)
-data("sentiment140_train")
-sentiment140_train %>% 
-  glimpse()
-```
+==========
 
 # Query freq_by_polarity
 
 
 ```{r}
+devtools::load_all()
 sentiment140_train %>% 
-  freq_by_polarity(user_list = c("", "DarkPiano"), 
+  freq_by_polarity(user_list = c("", "mcraddictal"), 
                    start_date_time = lubridate::as_datetime("2009-05-30"),
                    end_date_time = lubridate::as_datetime("2009-06-03"),
-                   keyword_list = c("good"))
+                   keyword_list = c(""))
 ```
 
-# Testthat
-
-```{r}
-usethis::use_testthat()
-usethis::use_test(name = "query_freq_by_polarity")
-devtools::test()
-```
-
-```{r}
-usethis::use_travis()
-```
 
 # POS Tagging
 
@@ -144,14 +111,6 @@ word_cor_network()
 library(rhub)
 rhub::check_for_cran(check_args = "--as-cran", path = ".")
 ```
-
-# Vignettes
-
-```{r}
-usethis::use_vignette("Report")
-devtools::build_vignettes()
-```
-
 
 # Keras
 
