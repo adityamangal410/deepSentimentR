@@ -2,6 +2,7 @@
 
 language: R
 cache: packages
+before_script: Rscript -e 'keras::install_keras()'
 before_deploy: Rscript -e 'remotes::install_cran("pkgdown")'
 deploy:
   provider: script
