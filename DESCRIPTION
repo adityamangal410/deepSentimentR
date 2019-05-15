@@ -24,7 +24,8 @@ Imports:
     tidytext,
     igraph,
     ggraph,
-    widyr
+    widyr,
+    keras
 Suggests: 
     testthat,
     knitr,

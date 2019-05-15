@@ -42,3 +42,31 @@ bigram_network()
 word_cor_network()
 ```
 
+```{r predict_lstm}
+predict_polarity_keras(model_load_path = system.file("extdata",
+                                                     "train_no_glove_lstm.rds",
+                                                     package = "deepSentimentR",
+                                                     mustWork = TRUE))
+```
+
+
+```{r predict_lstm_glove}
+predict_polarity_keras(model_load_path = system.file("extdata",
+                                                     "train_glove_lstm.rds",
+                                                     package = "deepSentimentR",
+                                                     mustWork = TRUE))
+```
+
+```{r predict_conv1d}
+predict_polarity_keras(model_load_path = system.file("extdata",
+                                                     "train_no_glove_conv_1d.rds",
+                                                     package = "deepSentimentR",
+                                                     mustWork = TRUE))
+```
+
+```{r predict_conv1d_glove}
+predict_polarity_keras(model_load_path = system.file("extdata",
+                                                     "train_glove_conv_1d.rds",
+                                                     package = "deepSentimentR",
+                                                     mustWork = TRUE))
+```

@@ -62,6 +62,7 @@ usethis::use_test(name = "query_freq_by_polarity")
 usethis::use_test(name = "time_series")
 usethis::use_test(name = "bigram_network")
 usethis::use_test(name = "word_cor_network")
+usethis::use_test(name = "predict_polarity_keras")
 ```
 
 ```{r}
@@ -121,41 +122,43 @@ rhub::check_for_cran(check_args = "--as-cran", path = ".")
 # Keras
 
 ```{r}
+devtools::load_all()
 train_lstm(epochs = 10,
-           model_save_path = "deepSentimentR/inst/extdata/train_no_glove_lstm.rds")
+           model_save_path = "inst/extdata/train_no_glove_lstm.rds")
 ```
 ```{r}
 train_lstm_with_glove(epochs = 10,
-                      glove_file_path = "~/Desktop/machine-learning/keras/glove.6B/glove.6B.100d.txt",
-                      model_save_path = "deepSentimentR/inst/extdata/train_glove_lstm.rds")
+                      glove_file_path = "~/Downloads/glove.6B.100d.txt",
+                      model_save_path = "inst/extdata/train_glove_lstm.rds")
 ```
 
 ```{r}
 train_conv_1d(epochs = 10,
-              model_save_path = "deepSentimentR/inst/extdata/train_no_glove_conv_1d.rds")
+              model_save_path = "inst/extdata/train_no_glove_conv_1d.rds")
 ```
 
 ```{r}
 train_conv1d_with_glove(epochs = 10,
-                        glove_file_path = "~/Desktop/machine-learning/keras/glove.6B/glove.6B.100d.txt",
-                        model_save_path = "deepSentimentR/inst/extdata/train_glove_conv_1d.rds")
+                        glove_file_path = "~/Downloads/glove.6B.100d.txt",
+                        model_save_path = "inst/extdata/train_glove_conv_1d.rds")
 ```
 
 ```{r}
-predict_polarity_keras(model_load_path = "deepSentimentR/inst/extdata/train_no_glove_lstm.rds")
+devtools::load_all()
+predict_polarity_keras(model_load_path = "inst/extdata/train_no_glove_lstm.rds")
 ```
 
 
 ```{r}
-predict_polarity_keras(model_load_path = "deepSentimentR/inst/extdata/train_glove_lstm.rds")
+predict_polarity_keras(model_load_path = "inst/extdata/train_glove_lstm.rds")
 ```
 
 ```{r}
-predict_polarity_keras(model_load_path = "deepSentimentR/inst/extdata/train_no_glove_conv_1d.rds")
+predict_polarity_keras(model_load_path = "inst/extdata/train_no_glove_conv_1d.rds")
 ```
 
 ```{r}
-predict_polarity_keras(model_load_path = "deepSentimentR/inst/extdata/train_glove_conv_1d.rds")
+predict_polarity_keras(model_load_path = "inst/extdata/train_glove_conv_1d.rds")
 ```
 
 
