@@ -54,17 +54,18 @@ set of docker images with R and different flavours of tidyverse, ML,
 geospatial
     etc.
 
-### Setup using rocker/ml
+### Setup using [rocker/ml](https://hub.docker.com/r/rocker/ml)
 
     docker run -d --name rstudio -p 8787:8787 -e PASSWORD=<PASSWORD> -e USER=<USER> -v /Users/<USER>/Desktop:/Desktop rocker/ml
 
-Go to <http://localhost:8787> to login to the rstudio server.
+Go to <http://localhost:8787> to login to the rstudio
+server.
 
 ``` r
 devtools::install_github("adityamangal410/deepSentimentR")
 ```
 
-### Setup using rocker/tidyverse
+### Setup using [rocker/tidyverse](https://hub.docker.com/r/rocker/tidyverse)
 
 Experimental
     steps
