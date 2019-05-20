@@ -33,15 +33,68 @@ install.packages("deepSentimentR")
 ```
 -->
 
-And the development version from [GitHub](https://github.com/) with:
+### Prerequisites
+
+``` r
+install.packages("dplyr")
+install.packages("keras")
+keras::install_keras()
+```
+
+### DeepSentimentR
+
+You can install the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("adityamangal410/deepSentimentR")
 ```
+
+## Setup using Rocker
+
+You can use [rocker](https://www.rocker-project.org/), which provides a set of docker images with R and different flavours of tidyverse, ML, geospatial etc. 
+
+### Setup using rocker/ml
+
+```
+docker run -d --name rstudio -p 8787:8787 -e PASSWORD=<PASSWORD> -e USER=<USER> -v /Users/<USER>/Desktop:/Desktop rocker/ml
+```
+
+Go to http://localhost:8787 to login to the rstudio server.
+
+``` r
+devtools::install_github("adityamangal410/deepSentimentR")
+```
+
+### Setup using rocker/tidyverse  
+
+Experimental steps  
+
+```
+docker run -d --name rstudio -p 8787:8787 -e PASSWORD=<PASSWORD> -e USER=<USER> -v /Users/<USER>/Desktop:/Desktop rocker/tidyverse
+```
+
+Go to http://localhost:8787 to login to the rstudio server.
+
+``` r
+library(tidyverse)
+system("python -V") # make sure you're using python3
+#If Not, login to docker container and run following
+#rm /usr/bin/python
+#ln -s /usr/bin/python3 /usr/bin/python
+#apt-get install curl
+system("curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py")
+system("python get-pip.py")
+system("pip3 install virtualenv")
+install.packages("keras")
+keras::install_keras()
+devtools::install_github("adityamangal410/deepSentimentR")
+```
+
+
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Visualize polarity frequency based on given filters:  
 
 ```{r example}
 library(dplyr)
@@ -52,6 +105,15 @@ sentiment140_train %>%
                    start_date_time = lubridate::as_datetime("2009-05-30"),
                    end_date_time = lubridate::as_datetime("2009-06-03"),
                    keyword_list = c(""))
+```
+
+Use pre-trained LSTM model using Glove Embeddings to make polarity predictions for the sample test dataset:  
+
+```{r example2}
+predict_polarity_keras(model_load_path = system.file("extdata",
+                                                     "train_glove_lstm.rds",
+                                                     package = "deepSentimentR",
+                                                     mustWork = TRUE))
 ```
 
 
