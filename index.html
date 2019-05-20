@@ -116,14 +116,16 @@ install.packages("deepSentimentR")
 <p>You can use <a href="https://www.rocker-project.org/">rocker</a>, which provides a set of docker images with R and different flavours of tidyverse, ML, geospatial etc.</p>
 <div id="setup-using-rockerml" class="section level3">
 <h3 class="hasAnchor">
-<a href="#setup-using-rockerml" class="anchor"></a>Setup using rocker/ml</h3>
+<a href="#setup-using-rockerml" class="anchor"></a>Setup using <a href="https://hub.docker.com/r/rocker/ml">rocker/ml</a>
+</h3>
 <pre><code>docker run -d --name rstudio -p 8787:8787 -e PASSWORD=&lt;PASSWORD&gt; -e USER=&lt;USER&gt; -v /Users/&lt;USER&gt;/Desktop:/Desktop rocker/ml</code></pre>
 <p>Go to <a href="http://localhost:8787" class="uri">http://localhost:8787</a> to login to the rstudio server.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"adityamangal410/deepSentimentR"</span>)</a></code></pre></div>
 </div>
 <div id="setup-using-rockertidyverse" class="section level3">
 <h3 class="hasAnchor">
-<a href="#setup-using-rockertidyverse" class="anchor"></a>Setup using rocker/tidyverse</h3>
+<a href="#setup-using-rockertidyverse" class="anchor"></a>Setup using <a href="https://hub.docker.com/r/rocker/tidyverse">rocker/tidyverse</a>
+</h3>
 <p>Experimental steps</p>
 <pre><code>docker run -d --name rstudio -p 8787:8787 -e PASSWORD=&lt;PASSWORD&gt; -e USER=&lt;USER&gt; -v /Users/&lt;USER&gt;/Desktop:/Desktop rocker/tidyverse</code></pre>
 <p>Go to <a href="http://localhost:8787" class="uri">http://localhost:8787</a> to login to the rstudio server.</p>
