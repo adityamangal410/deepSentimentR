@@ -46,7 +46,7 @@ In order to demonstrate the power of this package, lets pretend to be John, a ju
 
 ## O: Obtain the Data
 
-John finds the following "Twitter Airline Sentiment" dataset on - [kaggle](https://www.kaggle.com/crowdflower/twitter-airline-sentiment/version/2)
+John finds the following "Twitter Airline Sentiment" dataset on - [data.world](https://data.world/crowdflower/airline-twitter-sentiment)
 
 In this step, John does the following - 
 
@@ -56,28 +56,24 @@ In this step, John does the following -
   - Fix datatypes for the required fields.
   - And finally, rename the columns to the required columns for this package.
 
-```{r eval=FALSE}
-airlines = readr::read_csv("~/Downloads/twitter-airline-sentiment/Tweets.csv", 
+```{r}
+airlines = readr::read_csv("https://query.data.world/s/aa2xuctpx2ahuwrnljrwy37d4idlup", 
                            col_types = readr::cols(.default = readr::col_character()))
 
 airlines %>% 
-  mutate(airline_sentiment_confidence = as.numeric(airline_sentiment_confidence)) %>% 
+  mutate(airline_sentiment_confidence = as.numeric(`airline_sentiment:confidence`)) %>% 
   filter(airline_sentiment_confidence >= 0.8,
          airline_sentiment != "neutral",
          !is.na(user_timezone),
-         str_detect(user_timezone, "US & Canada")) %>% 
+         stringr::str_detect(user_timezone, "US & Canada")) %>% 
   select(airline_sentiment, tweet_id, tweet_created, airline, name, text)  %>% 
-  mutate(tweet_created = lubridate::as_datetime(stringr::str_replace(tweet_created, " -0800", ""), 
-                                                tz = "America/Los_Angeles"),
+  mutate(tweet_created = lubridate::mdy_hm(tweet_created),
          airline_sentiment = ifelse(airline_sentiment == "negative", 0, 4)) %>% 
   rename(polarity = airline_sentiment,
          id = tweet_id,
          date = tweet_created,
          query = airline,
          user = name) -> airlines
-
-airlines %>% 
-  readr::write_csv("~/Downloads/twitter-airline-sentiment/twitter_airline_sentiment.csv")
 ```
 
 ## S: Scrub the Data
@@ -91,8 +87,6 @@ Scrubbing the data would be the next step for John for use in further steps (all
 As in github repo: "data-raw/DATASET.R"
 
 ```{r}
-airlines <- readr::read_csv("~/Downloads/twitter-airline-sentiment/twitter_airline_sentiment.csv")
-
 filter_and_sub_sample_data <- function(data, data_size=50000) {
   data <- data %>%
     filter(stringi::stri_enc_mark(.data$text) == "ASCII") %>%
@@ -197,19 +191,19 @@ Given the small number of samples in our airlines dataset (i.e. 4106 obs.), we c
 ```{r eval=FALSE}
 deepSentimentR::train_lstm_with_glove(data = airlines,
                                       glove_file_path = "~/Downloads/glove.6B.100d.txt",
-                                      model_save_path = "~/Downloads/twitter-airline-sentiment/train_glove_lstm.rds")
+                                      model_save_path = "train_glove_lstm.rds")
 deepSentimentR::train_conv1d_with_glove(data = airlines,
                                         glove_file_path = "~/Downloads/glove.6B.100d.txt",
-                                        model_save_path = "~/Downloads/twitter-airline-sentiment/train_glove_conv_1d.rds")
+                                        model_save_path = "train_glove_conv_1d.rds")
 ```
 
 We can also use train_lstm or train_conv_1d functions in this package to train deep neural networks, LSTM or 1-D Convolutional Network respectively which will train its own embeddings on the given dataset, although given the small size of the data it may not give as accurate results as compared to glove. 
 
 ```{r eval=FALSE}
 deepSentimentR::train_lstm(data = airlines,
-                           model_save_path = "~/Downloads/twitter-airline-sentiment/train_no_glove_lstm.rds")
+                           model_save_path = "train_no_glove_lstm.rds")
 deepSentimentR::train_conv_1d(data = airlines,
-                              model_save_path = "~/Downloads/twitter-airline-sentiment/train_no_glove_conv_1d.rds")
+                              model_save_path = "train_no_glove_conv_1d.rds")
 ```
 
 ## N: iNterpret the Data
@@ -217,34 +211,6 @@ deepSentimentR::train_conv_1d(data = airlines,
 ### Predicting polarity using DNN
 
 John can use the predict_polarity_keras function in this package which will run the given pre-trained DNN models to make predictions on the airlines dataset. 
-
-```{r }
-lstm_no_glove_results <- deepSentimentR::predict_polarity_keras(data = airlines,
-                                                                model_load_path = "~/Downloads/twitter-airline-sentiment/train_no_glove_lstm.rds")
-lstm_glove_results <- deepSentimentR::predict_polarity_keras(data = airlines,
-                                     model_load_path = "~/Downloads/twitter-airline-sentiment/train_glove_lstm.rds")
-conv_1d_no_glove_results <- deepSentimentR::predict_polarity_keras(data = airlines,
-                                     model_load_path = "~/Downloads/twitter-airline-sentiment/train_no_glove_conv_1d.rds")
-conv_1d_glove_results <- deepSentimentR::predict_polarity_keras(data = airlines,
-                                     model_load_path = "~/Downloads/twitter-airline-sentiment/train_glove_conv_1d.rds")
-```
-
-
-```{r fig.width=9, fig.height=8}
-preds_result <- tibble(model = c("LSTM without Glove Embeddings",
-                                 "LSTM with Glove Embeddings",
-                                 "1-D Convolutional Network without Glove Embeddings",
-                                 "1-D Convolutional Network with Glove Embeddings"),
-                       accuracy = c(lstm_no_glove_results$accuracy,
-                                    lstm_glove_results$accuracy,
-                                    conv_1d_no_glove_results$accuracy,
-                                    conv_1d_glove_results$accuracy))
-preds_result
-```
-
-As we can see above, the 1-dimensional Convolutional Network model with Glove Embeddings gives the best prediction results for our airlines dataset with an accuracy of about 79.93%. 
-
-Lets make predictions using the pre-trained models provided in the deepSentimentR package. 
 
 ```{r}
 lstm_no_glove_results <- deepSentimentR::predict_polarity_keras(data = airlines)

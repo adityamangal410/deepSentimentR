@@ -5,9 +5,9 @@
 
 <!-- badges: start -->
 
-[![Project Status: WIP – Initial development is in progress, but there
-has not yet been a stable, usable release suitable for the
-public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![License:
 GPL-3](https://img.shields.io/badge/License-GPLv3-yellow.svg)](https://opensource.org/licenses/GPL-3.0)
 [![Travis build
@@ -157,52 +157,50 @@ predict_polarity_keras(model_load_path = system.file("extdata",
 #> # A tibble: 354 x 15
 #>    polarity    id date                query user  text  nouns adjectives
 #>       <dbl> <int> <dttm>              <chr> <chr> <chr> <int>      <int>
-#>  1        1   217 2009-05-25 17:29:39 mcdo… Mami… mgg …     7          2
-#>  2        1  2140 2009-05-20 02:38:17 nike  Chet… ew n…     4          2
+#>  1        0   217 2009-05-25 17:29:39 mcdo… Mami… mgg …     7          2
+#>  2        0  2140 2009-05-20 02:38:17 nike  Chet… ew n…     4          2
 #>  3        0   224 2009-05-25 17:34:51 chen… QCWo… ife?…     9          3
-#>  4        1   569 2009-06-07 21:38:16 kind… rach… @lon…     8          2
-#>  5        1  2546 2009-06-08 00:13:48 kind… k8tb… " lo…     7          1
-#>  6        1  1019 2009-05-11 05:21:25 lebr… unde… atch…     3          1
+#>  4        0   569 2009-06-07 21:38:16 kind… rach… @lon…     8          2
+#>  5        0  2546 2009-06-08 00:13:48 kind… k8tb… " lo…     7          1
+#>  6        0  1019 2009-05-11 05:21:25 lebr… unde… atch…     3          1
 #>  7        0  2110 2009-05-18 01:14:35 Malc… blin… @por…     7          3
-#>  8        1   256 2009-05-27 23:59:18 goog… maex… " am…     3          1
+#>  8        0   256 2009-05-27 23:59:18 goog… maex… " am…     3          1
 #>  9        0   413 2009-06-02 03:17:04 time… Jaso… " ha…    11          4
-#> 10        1  1003 2009-05-11 03:18:59 kind… Happ… y Ki…     1          0
+#> 10        0  1003 2009-05-11 03:18:59 kind… Happ… y Ki…     1          0
 #> # … with 344 more rows, and 7 more variables: prepositions <int>,
 #> #   articles <int>, pronouns <int>, verbs <int>, adverbs <int>,
 #> #   interjections <int>, pred_polarity[,1] <int>
 #> 
 #> $confusion_matrix
-#> # A tibble: 4 x 3
+#> # A tibble: 2 x 3
 #>   polarity pred_polarity count
 #>   <fct>    <fct>         <int>
-#> 1 0        0               122
-#> 2 0        1                53
-#> 3 1        0                31
-#> 4 1        1               148
+#> 1 0        0               153
+#> 2 0        1               201
 #> 
 #> $true_negative
-#> [1] 122
+#> [1] 153
 #> 
 #> $true_positive
-#> [1] 148
+#> integer(0)
 #> 
 #> $false_positive
-#> [1] 53
+#> [1] 201
 #> 
 #> $false_negative
-#> [1] 31
+#> integer(0)
 #> 
 #> $precision
-#> [1] 0.7363184
+#> numeric(0)
 #> 
 #> $recall
-#> [1] 0.8268156
+#> numeric(0)
 #> 
 #> $f1
-#> [1] 0.7789474
+#> numeric(0)
 #> 
 #> $accuracy
-#> [1] 0.7627119
+#> numeric(0)
 #> 
 #> $plot
 ```
