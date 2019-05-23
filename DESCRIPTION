@@ -30,7 +30,9 @@ Suggests:
     testthat,
     knitr,
     rmarkdown,
-    covr
+    covr,
+    gridExtra,
+    stringi
 VignetteBuilder: knitr
 URL: https://github.com/adityamangal410/deepSentimentR
 BugReports: https://github.com/adityamangal410/deepSentimentR/issues

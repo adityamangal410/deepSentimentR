@@ -14,11 +14,11 @@ library(dplyr)
 filter_and_sub_sample_data <- function(data, data_size=50000) {
   data <- data %>%
     filter(stringi::stri_enc_mark(.data$text) == "ASCII") %>%
-    mutate(text = str_replace(text, "&\\w+;", ""),
-           text = str_replace(text, "^\\s+|\\s+$", ""),
-           text = str_replace(text, "\\s+", " "),
-           text = str_replace(text, "[^:|[:punct:]+]", ""),
-           text = str_replace(text, " [^[:alnum:]+] ", " ")) %>%
+    mutate(text = stringr::str_replace(text, "&\\w+;", ""),
+           text = stringr::str_replace(text, "^\\s+|\\s+$", ""),
+           text = stringr::str_replace(text, "\\s+", " "),
+           text = stringr::str_replace(text, "[^:|[:punct:]+]", ""),
+           text = stringr::str_replace(text, " [^[:alnum:]+] ", " ")) %>%
     filter(nchar(text) > 20,
            polarity != 2) %>%
     mutate(polarity = ifelse(polarity == 4, "Positive", "Negative"))

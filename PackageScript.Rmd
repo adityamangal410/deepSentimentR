@@ -23,6 +23,7 @@ usethis::use_readme_rmd()
 
 ```{r}
 usethis::use_vignette("deepSentimentR")
+usethis::use_vignette("Twitter Airline Sentiment")
 ```
 
 ```{r}
